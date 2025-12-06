@@ -1,0 +1,371 @@
+/*
+ * =============================================================================
+ * Climate Fallacy Detector - Premium Theme Stylesheet
+ * =============================================================================
+ * A GitHub-inspired dark theme with vibrant accents for the FLICC TUI
+ * 
+ * Author: FLICC Research Team
+ * Version: 1.0.0
+ * =============================================================================
+ */
+
+
+/* =============================================================================
+ * DESIGN TOKENS (CSS Variables via Textual)
+ * =============================================================================
+ * Color palette based on GitHub's dark theme with custom fallacy accents
+ */
+
+$background: #0d1117;
+$surface: #161b22;
+$surface-overlay: #21262d;
+$border: #30363d;
+$border-focus: #58a6ff;
+
+$primary: #58a6ff;
+$success: #238636;
+$success-hover: #2ea043;
+$warning: #d29922;
+$error: #da3633;
+
+$text-primary: #c9d1d9;
+$text-secondary: #8b949e;
+$text-muted: #484f58;
+
+
+/* =============================================================================
+ * GLOBAL STYLES
+ * =============================================================================
+ */
+
+Screen {
+    background: $background;
+}
+
+/* Header & Footer */
+Header {
+    background: $surface;
+    color: $primary;
+}
+
+Footer {
+    background: $surface;
+}
+
+FooterKey {
+    background: $surface-overlay;
+}
+
+
+/* =============================================================================
+ * APP LAYOUT
+ * =============================================================================
+ */
+
+#app-container {
+    height: 100%;
+    padding: 1 2;
+}
+
+/* Header Section */
+#header-section {
+    height: auto;
+    margin-bottom: 1;
+}
+
+/* Main Content Grid - Two Panel Layout */
+#content-grid {
+    height: 1fr;
+}
+
+#left-panel {
+    width: 50%;
+    padding-right: 1;
+}
+
+#right-panel {
+    width: 50%;
+    padding-left: 1;
+}
+
+
+/* =============================================================================
+ * CUSTOM WIDGETS
+ * =============================================================================
+ */
+
+/* App Title */
+AppTitle {
+    height: 3;
+    padding: 1;
+    background: $surface;
+    border: heavy $border;
+    text-align: center;
+}
+
+/* Model Status Indicator */
+ModelStatus {
+    height: 1;
+    text-align: center;
+    margin-top: 1;
+}
+
+/* Analysis Status with Loading Indicator */
+AnalysisStatus {
+    height: auto;
+    padding: 1;
+    background: $surface;
+    border: round $border;
+    margin-bottom: 1;
+}
+
+#status-container {
+    height: auto;
+    align: center middle;
+}
+
+#status-spinner {
+    width: 4;
+    height: 1;
+}
+
+#status-message {
+    padding-left: 1;
+}
+
+/* Result Card */
+ResultCard {
+    height: auto;
+    padding: 1;
+}
+
+/* Explanation Panel */
+ExplanationPanel {
+    height: auto;
+    padding: 1;
+}
+
+/* Example Cards */
+ExampleCard {
+    height: auto;
+    padding: 1;
+    margin: 1 0;
+    background: $surface-overlay;
+    border: round $border;
+}
+
+ExampleCard:hover {
+    background: $border;
+    border: round $border-focus;
+}
+
+.example-text {
+    height: auto;
+}
+
+
+/* =============================================================================
+ * INPUT SECTION
+ * =============================================================================
+ */
+
+#input-section {
+    height: auto;
+    max-height: 50%;
+    background: $surface;
+    border: round $border;
+    padding: 1;
+    margin-bottom: 1;
+}
+
+#input-section:focus-within {
+    border: round $border-focus;
+}
+
+/* Prompt Input TextArea */
+PromptInput {
+    height: 8;
+    background: $background;
+    border: round $border;
+}
+
+PromptInput:focus {
+    border: round $border-focus;
+}
+
+/* Button Row */
+#button-row {
+    height: 3;
+    margin-top: 1;
+    align: center middle;
+}
+
+Button {
+    margin: 0 1;
+    min-width: 16;
+}
+
+#analyze-btn {
+    background: $success;
+}
+
+#analyze-btn:hover {
+    background: $success-hover;
+}
+
+#clear-btn {
+    background: $surface-overlay;
+    border: solid $border;
+}
+
+#clear-btn:hover {
+    background: $border;
+}
+
+
+/* =============================================================================
+ * RESULTS SECTION (Right Panel)
+ * =============================================================================
+ */
+
+#results-section {
+    height: 1fr;
+    background: $surface;
+    border: round $border;
+    padding: 1;
+}
+
+#results-section:focus-within {
+    border: round $border-focus;
+}
+
+#explanation-section {
+    height: 1fr;
+    background: $surface;
+    border: round $border;
+    padding: 1;
+    margin-top: 1;
+}
+
+
+/* =============================================================================
+ * EXAMPLES SECTION
+ * =============================================================================
+ */
+
+#examples-section {
+    height: auto;
+    max-height: 40%;
+    background: $surface;
+    border: round $border;
+    padding: 1;
+}
+
+/* Collapsible widgets */
+Collapsible {
+    background: transparent;
+    padding: 0;
+}
+
+CollapsibleTitle {
+    background: $surface-overlay;
+    padding: 1;
+}
+
+
+/* =============================================================================
+ * SCROLLABLE CONTAINERS
+ * =============================================================================
+ */
+
+VerticalScroll {
+    scrollbar-background: $surface-overlay;
+    scrollbar-color: $text-muted;
+    scrollbar-color-hover: $text-secondary;
+    scrollbar-color-active: $text-primary;
+}
+
+
+/* =============================================================================
+ * TYPOGRAPHY & UTILITIES
+ * =============================================================================
+ */
+
+.section-title {
+    text-style: bold;
+    color: $primary;
+    padding-bottom: 1;
+}
+
+.text-muted {
+    color: $text-muted;
+}
+
+.text-secondary {
+    color: $text-secondary;
+}
+
+.text-center {
+    text-align: center;
+}
+
+
+/* =============================================================================
+ * FALLACY-SPECIFIC COLORS (for reference in Rich Text)
+ * =============================================================================
+ * These colors are used in the Python code for fallacy highlighting:
+ *
+ * ad hominem:              #E74C3C (red)
+ * anecdote:                #9B59B6 (purple)
+ * cherry picking:          #FF6B6B (coral)
+ * conspiracy theory:       #8E44AD (deep purple)
+ * fake experts:            #4ECDC4 (teal)
+ * false choice:            #3498DB (blue)
+ * false equivalence:       #1ABC9C (turquoise)
+ * impossible expectations: #F39C12 (orange)
+ * misrepresentation:       #E67E22 (dark orange)
+ * oversimplification:      #F1C40F (yellow)
+ * single cause:            #2ECC71 (green)
+ * slothful induction:      #95A5A6 (gray)
+ * =============================================================================
+ */
+
+
+/* =============================================================================
+ * ATTRIBUTION HIGHLIGHTING (for Explainability Panel)
+ * =============================================================================
+ */
+
+.attr-positive-strong {
+    background: #1a3a1a;
+    color: #2ecc71;
+    text-style: bold;
+}
+
+.attr-positive {
+    color: #2ecc71;
+}
+
+.attr-negative-strong {
+    background: #3a1a1a;
+    color: #e74c3c;
+    text-style: bold;
+}
+
+.attr-negative {
+    color: #e74c3c;
+}
+
+.attr-neutral {
+    color: $text-primary;
+}
+
+
+/* =============================================================================
+ * RESPONSIVE ADJUSTMENTS
+ * =============================================================================
+ * Note: Textual doesn't have media queries, but we can use container queries
+ * or adjust via Python based on terminal size
+ */
+
+/* Compact mode for smaller terminals could be added here */
