@@ -53,7 +53,7 @@ python deberta_fallacy_detector_tui.py
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 FLICC/
