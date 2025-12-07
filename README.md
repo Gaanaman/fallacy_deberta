@@ -1,4 +1,4 @@
-# 🌍 Climate Fallacy Detector
+# Climate Fallacy Detector
 
 A fine-tuned **DeBERTa-v2-xlarge** model for detecting logical fallacies in climate misinformation, with an interactive Terminal UI for real-time analysis.
 
@@ -6,15 +6,15 @@ A fine-tuned **DeBERTa-v2-xlarge** model for detecting logical fallacies in clim
 
 ---
 
-## 📖 About
+## About
 
 This project builds upon the research paper "[Detecting Fallacies in Climate Misinformation: A Technocognitive Approach to Identifying Misleading Argumentation](https://arxiv.org/abs/2405.08254)" by *Francisco Zanartu, John Cook, Markus Wagner, Julian Garcia*.
 
-**My contribution:** Fine-tuned a **DeBERTa-v2-xlarge** model on the FLICC dataset, successfully replicating research results in climate fallacy detection across **12 fallacy classes**, and built an interactive TUI for real-time fallacy detection.
+**My contribution:** Fine-tuned a **DeBERTa-v2-xlarge** model on the FLICC dataset using apple mps, successfully replicating research results in climate fallacy detection across **12 fallacy classes**, and built an interactive TUI for real-time fallacy detection.
 
 ---
 
-## 🎯 Fallacy Classes (12)
+## Fallacy Classes (12)
 
 | Class | Description |
 |-------|-------------|
@@ -33,7 +33,7 @@ This project builds upon the research paper "[Detecting Fallacies in Climate Mis
 
 ---
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Use the Model from HuggingFace
 
@@ -76,13 +76,13 @@ FLICC/
 
 ---
 
-## 📊 Dataset
+## Dataset
 
 The FLICC dataset is available in the `Data/` folder.
 
 ---
 
-## 📚 Citation
+## Citation
 
 If you use this work, please cite the original paper:
 
@@ -99,7 +99,7 @@ If you use this work, please cite the original paper:
 
 ---
 
-## 📬 Contact
+## Contact
 
 - **Original Research:** Francisco Zanartu
 - **This Implementation:** [Daniel K. Adotey](https://github.com/Gaanaman)
