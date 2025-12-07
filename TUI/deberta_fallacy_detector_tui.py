@@ -12,7 +12,7 @@ Run with: python deberta_fallacy_detector_tui.py
 import torch
 from transformers import AutoTokenizer, AutoModelForSequenceClassification
 from captum.attr import LayerIntegratedGradients
-from pathlib import Path
+
 
 from textual.app import App, ComposeResult
 from textual.containers import Container, Horizontal, Vertical, VerticalScroll
@@ -24,7 +24,7 @@ from rich.text import Text
 # ==============================================================================
 # CONFIGURATION
 # ==============================================================================
-MODEL_PATH = Path(__file__).parent.parent / "best_model"
+MODEL_ID = "Gaanaman/deberta-v2-xlarge-climate-fallacy"
 MAX_SEQ_LENGTH = 512
 
 # Fallacy descriptions for user education (12 FLICC classes)
@@ -115,12 +115,12 @@ print("🔄 Loading model... (this may take a moment)")
 device = torch.device("mps" if torch.backends.mps.is_available() else 
                       "cuda" if torch.cuda.is_available() else "cpu")
 
-model = AutoModelForSequenceClassification.from_pretrained(str(MODEL_PATH))
+model = AutoModelForSequenceClassification.from_pretrained(MODEL_ID)
 model.to(device)
 model.eval()
 model.zero_grad()
 
-tokenizer = AutoTokenizer.from_pretrained(str(MODEL_PATH), use_fast=False)
+tokenizer = AutoTokenizer.from_pretrained(MODEL_ID, use_fast=False)
 id2label = model.config.id2label
 
 print(f"✓ Model loaded on {device}!")
@@ -192,7 +192,7 @@ def predict_and_explain(text: str) -> tuple:
 # TEXTUAL APP
 # ==============================================================================
 class ClimateFallacyDetectorApp(App):
-    """Premium Terminal UI for Climate Fallacy Detection."""
+    """Retro Terminal UI for Climate Fallacy Detection."""
     
     CSS_PATH = "deberta_fallacy_detector_tui.tcss"
     
@@ -202,7 +202,7 @@ class ClimateFallacyDetectorApp(App):
     BINDINGS = [
         Binding("q", "quit", "Quit"),
         Binding("ctrl+c", "quit", "Quit", show=False),
-        Binding("ctrl+enter", "analyze", "Analyze"),
+        Binding("ctrl+a", "analyze", "Analyze"),
         Binding("ctrl+l", "clear", "Clear"),
     ]
     
@@ -225,11 +225,11 @@ class ClimateFallacyDetectorApp(App):
                 with Vertical(id="left-panel"):
                     # Input Section
                     with Vertical(id="input-section"):
-                        yield Label("📝 Enter a climate claim to analyze:", classes="section-title")
+                        yield Label("Enter a climate claim to analyze:", classes="section-title")
                         yield TextArea(id="input-area", soft_wrap=True)
                         with Horizontal(id="button-row"):
-                            yield Button("🔍 Analyze", id="analyze-btn", variant="success")
-                            yield Button("🗑 Clear", id="clear-btn", variant="default")
+                            yield Button("Analyze", id="analyze-btn", variant="success")
+                            yield Button("Clear", id="clear-btn", variant="default")
                     
                     # Examples Section
                     with VerticalScroll(id="examples-section"):
@@ -252,7 +252,7 @@ class ClimateFallacyDetectorApp(App):
                     
                     # Explanation Section
                     with VerticalScroll(id="explanation-section"):
-                        yield Label("🧠 Explainability:", classes="section-title")
+                        yield Label("Explainability:", classes="section-title")
                         yield Static("Token attributions will appear here after analysis.", 
                                     id="explanation-panel")
         

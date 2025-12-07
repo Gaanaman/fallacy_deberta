@@ -1,15 +1,91 @@
-# Detecting Fallacies in Climate Misinformation: A Technocognitive Approach to Identifying Misleading Argumentation
-Repo for the paper "[Detecting Fallacies in Climate Misinformation: A Technocognitive Approach to Identifying Misleading Argumentation
-]([https://arxiv.org/abs/2202.13758](https://arxiv.org/abs/2405.08254))" by _Francisco Zanartu, John Cook, Markus Wagner, Julian Garcia_.
+# 🌍 Climate Fallacy Detector
 
-> Misinformation about climate change is a complex societal issue requiring holistic, interdisciplinary solutions at the intersection between technology and psychology. One proposed solution is a "technocognitive" approach, involving the synthesis of psychological and computer science research. Psychological research has identified that interventions in response to misinformation require both fact-based (e.g., factual explanations) and technique-based (e.g., explanations of misleading techniques) content. However, little progress has been made on documenting and detecting fallacies in climate misinformation. In this study, we apply a previously developed critical thinking methodology for deconstructing climate misinformation, in order to develop a dataset mapping different types of climate misinformation to reasoning fallacies. This dataset is used to train a model to detect fallacies in climate misinformation. Our study shows F1 scores that are 2.5 to 3.5 better than previous works. The fallacies that are easiest to detect include fake experts and anecdotal arguments, while fallacies that require background knowledge, such as oversimplification, misrepresentation, and slothful induction, are relatively more difficult to detect. This research lays the groundwork for development of solutions where automatically detected climate misinformation can be countered with generative technique-based corrections.
-<hr>
+A fine-tuned **DeBERTa-v2-xlarge** model for detecting logical fallacies in climate misinformation, with an interactive Terminal UI for real-time analysis.
 
+[![Hugging Face](https://img.shields.io/badge/🤗%20Model-deberta--v2--xlarge--climate--fallacy-blue)](https://huggingface.co/Gaanaman/deberta-v2-xlarge-climate-fallacy)
 
-#### Dataset
-Feel free to access our data in the `Data/` folder. 
+---
 
-#### To cite the paper:
+## 📖 About
+
+This project builds upon the research paper "[Detecting Fallacies in Climate Misinformation: A Technocognitive Approach to Identifying Misleading Argumentation](https://arxiv.org/abs/2405.08254)" by *Francisco Zanartu, John Cook, Markus Wagner, Julian Garcia*.
+
+**My contribution:** Fine-tuned a **DeBERTa-v2-xlarge** model on the FLICC dataset, successfully replicating research results in climate fallacy detection across **12 fallacy classes**, and built an interactive TUI for real-time fallacy detection.
+
+---
+
+## 🎯 Fallacy Classes (12)
+
+| Class | Description |
+|-------|-------------|
+| Ad Hominem | Attacking the person instead of the argument |
+| Anecdote | Using personal experience over scientific evidence |
+| Cherry Picking | Selectively choosing data |
+| Conspiracy Theory | Claiming coordinated deception |
+| Fake Experts | Citing unqualified sources |
+| False Choice | Presenting limited options |
+| False Equivalence | Equating unequal things |
+| Impossible Expectations | Demanding unrealistic standards |
+| Misrepresentation | Distorting facts or positions |
+| Oversimplification | Reducing complex issues |
+| Single Cause | Attributing to one factor |
+| Slothful Induction | Ignoring strong evidence |
+
+---
+
+## 🚀 Quick Start
+
+### Use the Model from HuggingFace
+
+```python
+from transformers import AutoModelForSequenceClassification, AutoTokenizer
+
+model = AutoModelForSequenceClassification.from_pretrained("Gaanaman/deberta-v2-xlarge-climate-fallacy")
+tokenizer = AutoTokenizer.from_pretrained("Gaanaman/deberta-v2-xlarge-climate-fallacy")
+```
+
+### Run the Terminal UI
+
+```bash
+cd TUI
+python deberta_fallacy_detector_tui.py
+```
+
+---
+
+## 📁 Project Structure
+
+```
+FLICC/
+├── Data/                      # Original FLICC dataset
+├── TUI/                       # Terminal User Interface
+│   ├── deberta_fallacy_detector_tui.py
+│   ├── deberta_fallacy_detector_tui.tcss
+│   └── Widgets/               # Custom UI components
+├── Experiments/               # Hyperparameter search notebooks
+│   ├── all_search_focal.ipynb
+│   ├── all_search_lora.ipynb
+│   ├── all_search_lr.ipynb
+│   └── all_search_wd.ipynb
+├── Experiments_mps/           # Apple Silicon (MPS) experiments
+├── FLICC_original_code/       # Original research code
+├── train_deberta_pytorch.ipynb  # Main training notebook
+├── evaluate_model.ipynb         # Model evaluation & metrics
+└── best_model/                  # Trained model weights (gitignored)
+```
+
+---
+
+## 📊 Dataset
+
+The FLICC dataset is available in the `Data/` folder.
+
+---
+
+## 📚 Citation
+
+If you use this work, please cite the original paper:
+
 ```bibtex
 @misc{zanartu2024detecting,
       title={Detecting Fallacies in Climate Misinformation: A Technocognitive Approach to Identifying Misleading Argumentation}, 
@@ -21,5 +97,9 @@ Feel free to access our data in the `Data/` folder.
 }
 ```
 
-#### Contact:
-- Questions?, feel free to email Francisco Zanartu
+---
+
+## 📬 Contact
+
+- **Original Research:** Francisco Zanartu
+- **This Implementation:** [Daniel K. Adotey](https://github.com/Gaanaman)
